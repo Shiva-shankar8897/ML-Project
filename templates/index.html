@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Predictor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.png') }}"
+             class="logo">
+        <span>PricePredictor</span>
+    </div>
+</nav>
+
+<!-- ===== Form Card ===== -->
+<div class="container">
+
+    <h1>🏠 House Price Prediction</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Area (sq ft)</label>
+        <input type="number" name="area" required>
+
+        <label>Bedrooms</label>
+        <input type="number" name="bedrooms" required>
+
+        <label>Bathrooms</label>
+        <input type="number" name="bathrooms" required>
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <!-- Hidden place input from map -->
+        <input type="hidden" name="place" id="place">
+
+        <label>Select Location on Map</label>
+        <div id="map"></div>
+
+        <button type="submit">Predict Price</button>
+
+    </form>
+
+</div>
+
+<!-- ===== Leaflet Map JS ===== -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    var map = L.map('map').setView([17.3850, 78.4867], 5);
+
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    ).addTo(map);
+
+    var marker;
+
+    map.on('click', function(e) {
+
+        if (marker) {
+            map.removeLayer(marker);
+        }
+
+        marker = L.marker(e.latlng).addTo(map);
+
+        document.getElementById("place").value =
+            e.latlng.lat + "," + e.latlng.lng;
+    });
+</script>
+
+</body>
+</html>

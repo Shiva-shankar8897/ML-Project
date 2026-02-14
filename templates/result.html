@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.png') }}"
+             class="logo">
+        <span>PricePredictor</span>
+    </div>
+</nav>
+
+<!-- ===== Result Card ===== -->
+<div class="container">
+
+    <h1>💰 Predicted House Price</h1>
+
+    <!-- Text Result -->
+    <h2>{{ prediction }}</h2>
+
+    <!-- Chart Canvas -->
+    <canvas id="priceChart"></canvas>
+
+    <!-- Back Button -->
+    <a href="/">← Predict Another</a>
+
+</div>
+
+<!-- ===== Chart Script ===== -->
+<script>
+
+    /* Safe Jinja → JavaScript conversion */
+    const priceValue =
+        JSON.parse('{{ price_value | tojson | safe }}');
+
+    const ctx =
+        document.getElementById('priceChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Predicted Price'],
+            datasets: [{
+                label: 'House Price',
+                data: [priceValue]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

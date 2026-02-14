@@ -1,0 +1,99 @@
+/* ===== Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    width: 100%;
+    background: #111;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* ===== Background ===== */
+body {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    min-height: 100vh;
+}
+
+/* ===== Container ===== */
+.container {
+    width: 90%;
+    max-width: 420px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== Form ===== */
+label {
+    font-weight: 600;
+    margin-top: 12px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* ===== Map ===== */
+#map {
+    height: 250px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+/* ===== Chart ===== */
+canvas {
+    margin-top: 20px;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+}
