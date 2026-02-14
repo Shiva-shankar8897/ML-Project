@@ -167,8 +167,7 @@ pip install -r requirements.txt
 ## 👨‍💻 Author
 
 Your Name
-GitHub: https://github.com/yourusername
-LinkedIn: https://linkedin.com/in/yourprofile
+GitHub: https://github.com/Shiva-shankar8897
 
 ---
 
